@@ -23,12 +23,16 @@ function App() {
     setCategory(text);
   }
 
+  function handleAddTask(task) {
+    setTasks((tasks) => [...tasks, task]);
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} onFilter={handleFilter} />
-      <NewTaskForm />
-      <TaskList filteredTasks={filteredTasks} onDelete={handleDelete} />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={handleAddTask} />
+      <TaskList tasks={filteredTasks} onDelete={handleDelete} />
     </div>
   );
 }
